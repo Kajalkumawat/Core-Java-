@@ -1,0 +1,108 @@
+throw keyword :manually 
+-------------------------------------------------------
+->we want to write some message with exception using throw keyword 
+
+throw new exception_class("error message");  
+
+ThrowCase1.java
+public class ThrowCase1 {
+    public static void main(String[] args) {
+        throw new ArithmeticException("my name is kajal kumawat ");
+    }
+}
+-------------------------------------------------------
+case 2 : 
+ThrowCase2.java
+
+public class ThrowCase2 {
+    static ArithmeticException ex = new ArithmeticException();
+
+    public static void main(String[] args) {
+        throw ex;
+    }
+}
+-------------------------------------------------------
+case 3 : 
+public class ThrowCase3 {
+    static ArithmeticException ex;
+
+    public static void main(String[] args) {
+        throw ex;
+    }
+}
+-------------------------------------
+case 4 :
+public class ThrowCase4 {
+    public static void main(String[] args) {
+        System.out.println("hello");
+        throw new ArithmeticException("hello");
+        // compile time :unreachable statement error
+    }
+}
+----------------
+case 5 :
+public class ThrowCase5 {
+    public static void main(String[] args) {
+        //class used as exception error 
+        throw new ThrowCase5("hello world");
+        //it give compile time errror 
+    }
+}
+
+
+ThrowCase5.java	
+------------------------------------------------
+case 6 : 
+
+how to create customized exception and user define exception : 
+public class ThrowCase6 extends RuntimeException {
+    public ThrowCase6(String name) {
+        System.out.println(name);
+    }
+
+    public static void main(String[] args) {
+        throw new ThrowCase6("hello world");
+    }
+}
+------------------------------------------------
+public class ThrowNew extends Exception {
+    public static void voterid(int age) {
+        if (age < 18) {
+            throw new ArithmeticException("you are not valid for vote");
+        } else {
+            System.out.println("you are valid for vote");
+        }
+    }
+
+    public static void main(String[] args) {
+        voterid(3);
+    }
+}
+------------------------------------------------
+class A extends RuntimeException {
+    A(String name) {
+        System.out.println(name);
+    }
+}
+
+class B {
+    void hello() {
+        int a = 8;
+        if (a > 10) {
+            throw new A("a is greater than");
+        } else {
+            System.out.println("a is less than 10 ");
+        }
+    }
+}
+
+public class ThrowCode2 {
+    public static void main(String[] args) {
+        B p = new B();
+        p.hello();
+    }
+}
+
+
+
+

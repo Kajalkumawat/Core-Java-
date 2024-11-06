@@ -1,0 +1,82 @@
+String convert into primitive data type : 
+string -->wc --- >PD 
+when string convert wc use predefine method then wc convert pd using autoboxing(automatic typecasting through compiler )
+
+public class StringConvertPD {
+    public static void main(String[] args) {
+        String name = "123";
+        // convert primtive data type
+        Integer i = Integer.parseInt(name);
+        System.out.println(i);
+        // wrapper convert into primitive data type
+        int b = i;
+        System.out.println(b);
+
+        // float :
+        String h = "8.9";
+        Float f = Float.parseFloat(h);
+        float g = f;
+        System.out.println(g);
+    }
+}
+-------------------------------------------------------------
+primtive data type convert into string : 
+public class PDConvertString {
+    public static void main(String[] args) {
+        // primtive data type convert into string toString
+        // step1 :PD convert into WC
+        int a = 10;
+        Integer p = Integer.valueOf(a);
+        // wc convert into String
+        String s = p.toString();
+        System.out.println(s);
+    }
+}
+-------------------------------------------------------------
+string convert wrapper class :
+public class StringConvertWC {
+    public static void main(String[] args) {
+        // string convert into wrapper class
+        String n = "67";
+        Integer i = Integer.valueOf(n);
+        System.out.println(i);
+    }
+}
+-------------------------------------------------------------
+wrapper class convert into Sting : 
+public class WrapperClassConvertString {
+    public static void main(String[] args) {
+        Integer i=new Integer(87);
+        System.out.println(i.toString(i));
+    }
+}
+-------------------------------------------------------------
+primtive data type convert into wrapper class :  
+
+PDconvertWc.java
+public class PDconvertWc {
+    public static void main(String[] args) {
+        int i = 98;
+        Integer n = Integer.valueOf(i);
+        System.out.println(n);
+    }
+}
+-------------------------------------------------------------
+wrapper class  convert into primitive data type : 
+
+public class WcConvertPD {
+    public static void main(String[] args) {
+        // autoboxing : value
+        Integer i = 78;
+        int j = i;
+        System.out.println(j);
+    }
+}
+-------------------------------------------------------------
+
+
+
+
+
+
+

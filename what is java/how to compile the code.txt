@@ -1,0 +1,140 @@
+public class Main{
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+---------------------------------------------------
+public : access modifier 
+
+class :keyword 
+
+Main :class name 
+
+{ } :curly bracket 
+
+public static void main(String[] args) :command line argument 
+
+command line argument :
+a)variable length 
+ public static void main(String...args) 
+starting index :1 
+
+... :ellapse 
+
+b)array length argument | fixed length argument  
+ public static void main(String[] args)
+starting index :zero 
+
+
+class :first letter capital 
+class k sath object 
+
+ public static void main(String[] args) 
+public :access modifier 
+
+static :keyword 
+->save memory 
+->no need object creation 
+
+void :return_type 
+
+main() :method 
+->it is a starting point 
+->for code execution 
+
+String : 
+->class (wrapper class ) 
+->set of characters.
+
+args :object 
+
+ System.out.println("Hello World");
+
+System : 
+->class 
+
+out : object 
+which class :PrintStream class 
+
+print() :method :PrintStream class 
+
+. : 
+->dot operator 
+->class k through object ko call krta hey 
+->object k through method ko call krta hey 
+->class k through method ko call krta hey 
+
+------------------------------------------------------------
+how to compile code : 
+
+compiler :source code convert into machine code (bytecode) 
+
+JVM :java virtual machine 
+->read byte 
+->it recompile the code through JIT (just in time compiler) 
+
+what is bytecode :
+->.class file 
+->it is lightweight 
+->it is platform independent 
+->it import the files 
+
+why java is platform independent? 
+->due to byte code and jvm 
+
+---------------------------------------------------------------
+JDK , JRE and JVM :
+
+JDK :
+->java development kit 
+->it contains compiler and some development tools 
+->JRE +development tools (javac) 
+
+JRE :
+->java runtime environment .
+->it provide the enviorment for code execution.
+->JVM + jar files (package) 
+
+JVM :
+->java virtual machine 
+->it read bytecode 
+
+---------------------------------------
+classloader :
+->load class file 
+
+
+bytecode verifier :
+->to verify the code is it byte code or not 
+
+JIT :
+->just in time 
+->convert byte code into executable code 
+
+interpretor :
+line to line read 
+
+garbage collector :
+->it free the memory of unused object and unsed variables . 
+
+
+why java is strongly types language ? 
+->through gc 
+->pointers does not support in java 
+
+-------------------------------------------------------------------
+why java is more secured :
+->lack of pointers 
+->sandbox mechanism 
+
+pointers 
+->store address 
+->lack of pointers 
+->it supports implicitly pointer only it does not explicit pointer
+
+->sandbox mechanism :
+->a jvm provide a layer external application does not effect on internal application and internal application does not effect on external application. 
+
+
+
+

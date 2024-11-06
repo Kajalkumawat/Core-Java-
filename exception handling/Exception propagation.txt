@@ -1,0 +1,146 @@
+throws : 	
+----------------------------------------------------------------
+->it is keyword 
+->it always used with method 
+->it is used two or more exceptions in single method 
+
+void show() throws Exception {} 
+
+---------------------------------------------------------------
+public class Throws1{
+   static void show() throws ArithmeticException{
+        System.out.print("Handle");
+    }
+    public static void main(String[] args) {
+       show(); 
+    }
+}  
+-----------------------------------------------
+public class Throws1 {
+    static void show() throws ArithmeticException, NullPointerException {
+        throw new ArithmeticException("hello");
+    }
+
+    public static void main(String[] args) {
+        show();
+    }
+}
+-------------------------------------------------
+public class Throws2 extends RuntimeException {
+    static void show() throws Throws2 {
+
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
+-----------------------------------------------------
+Java Exception Propagation :
+->call one method to another method and handle the exception 
+
+
+class A {
+    void show1() {
+        int a = 9 / 0;
+        System.out.println(a);
+    }
+
+    void show2() {
+        show1();
+    }
+
+    void show3() {
+        try {
+            show2();
+        } catch (Exception ex) {
+            System.out.println("handle");
+        }
+
+    }
+}
+
+public class ExceptionPropagation {
+    public static void main(String[] args) {
+        A p = new A();
+        p.show3();
+    }
+}
+
+----------------------------------------
+final and finally and finalize 
+
+
+-----------------------------------------------------
+Exception Handling with Method Overriding in Java :
+
+ExceptionOverideCase1.java
+
+case 1 : 
+parent class -->Exception  
+
+child class --->unchecked Exception 
+
+it is overrided but does not solve problem of method overriding 
+
+/*
+ * parent class :Exception same
+ * child class :Exception same 
+ * then it is overrided and easily solve the problem through super keyword using try catch 
+ */
+class A {
+    void show() throws Exception {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws Exception {
+        super.show();
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase2 {
+    public static void main(String[] args) {
+        B p = new B();
+        try {
+            p.show();
+        } catch (Exception ex) {
+            System.out.println("handle");
+        }
+    }
+
+}
+----------
+/*
+ * parent class :uncheck exception 
+ * child class :uncheck exception 
+ * method overrided and solve problem and no need to use try catch 
+ */
+class A {
+    void show() throws ArithmeticException {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws ArithmeticException {
+        super.show();
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase3 {
+    public static void main(String[] args) {
+        B p = new B();
+        p.show();
+    }
+
+}
+
+
+
+
+
+

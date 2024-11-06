@@ -1,0 +1,66 @@
+software :
+->set of programs
+
+programs :
+->set of instructions 
+
+what is java ? 
+->it is programming language.
+->it is a object oriented programming language.
+
+=>object oriented programming language :
+->based on class and object 
+
+class :is a blueprint (map) and it is set of object
+
+object :it is a real world entity 
+->it have particular characterstic and behavior 
+
+Java is a high level, robust, object-oriented and secure programming language.
+
+high level :human understandable language, easy to understand 
+
+robust :it is a strongly typed language  :strong memory management 
+
+
+JAVA IS WORK ON CORA :
+C :create
+O :one 
+R :run 
+A :anywhere
+
+platform :it is a set of hardware and software and on which a program run on this application 
+
+dependent :.c 
+->when make a code and it does not run on pc to another pc 
+
+independent :
+->when make a code and it easy to run on pc to another pc 
+--------------------------------------------------------------------
+public class Main{
+    public static void main(String[] args){
+        
+    }
+}
+--------------------------------------------------
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Hello World");
+    }
+}
+
+commands :
+compile time command :
+javac FileName.java
+
+
+run time command :
+java ClassName|FileName
+
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.print("Hello World");
+    }
+}
+

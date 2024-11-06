@@ -1,0 +1,199 @@
+synchronized  :
+-----------------------------------------------------------
+synchronization |synchronized:
+when a system have multiple threads for exection then synchronized run only single thread .   
+
+-----------------------------------------------------------
+synchronized :keyword 
+->method 
+->block 
+
+-----------------------------------------------------------
+without synchronization : 
+
+WithoutSyn.java
+class A {
+    String name;
+
+    A(String name) {
+        this.name = name;
+    }
+}
+
+class B {
+    A p;// class refrence variable
+
+    B(A p) {
+        this.p = p;
+    }
+
+    void show() {
+        System.out.println(p.name);
+    }
+}
+
+public class WithoutSyn {
+    public static void main(String[] args) {
+        A k = new A("kajal");
+        B l = new B(k);
+        l.show();
+    }
+}
+----------------------------------------------------
+threading : 
+class A {
+    public void wish(String name) {// step5
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Good Morning " + name);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+                System.out.println("got");
+            }
+        }
+    }
+}
+
+// thread class
+class Thread1 extends Thread {
+    A p;
+    String name;// step3
+
+    Thread1(A p, String name) {// step2
+        this.p = p;
+        this.name = name;
+    }
+
+    public void run() {
+        p.wish(name);// step4
+    }
+}
+
+public class WithoutSyn {
+    public static void main(String[] args) {
+        A p = new A();
+        Thread1 t1 = new Thread1(p, "kajal");// step1
+        Thread1 t2 = new Thread1(p, "garima");
+        t1.start();
+        t2.start();
+    }
+}
+// output :non synchronized form (kbhi bhi koe bhi thread run ho jaye )
+----------
+
+WithSynchornization.java
+
+class A {
+    public synchronized void wish(String name) {// step5
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("Good Morning " + name);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+                System.out.println("got");
+            }
+        }
+    }
+}
+
+// thread class
+class Thread1 extends Thread {
+    A p;
+    String name;// step3
+
+    Thread1(A p, String name) {// step2
+        this.p = p;
+        this.name = name;
+    }
+
+    public void run() {
+        p.wish(name);// step4
+    }
+}
+
+public class WithSynchornization {
+    public static void main(String[] args) {
+        A p = new A();
+        Thread1 t1 = new Thread1(p, "kajal");// step1
+        Thread1 t2 = new Thread1(p, "garima");
+        t1.start();
+        t2.start();
+    }
+}
+
+----------------------------------------------------
+class A --->table print 
+class B ->2 
+class C 3 -> 5 
+
+TwoThread.java	
+class A {
+    public synchronized void table(int num) {
+        for (int i = 1; i <= 10; i++) {
+            System.out.print(i * num + " ");
+            try {
+                Thread.sleep(1000);
+            } catch (Exception ex) {
+            }
+        }
+
+    }
+}
+
+class B extends Thread {
+    A p;
+    int num;
+
+    B(A p, int num) {
+        this.p = p;
+        this.num = num;
+    }
+
+    public void run() {
+        p.table(num);
+    }
+}
+
+class C extends Thread {
+    A k;
+    int num;
+
+    C(A k, int num) {
+        this.k = k;
+        this.num = num;
+    }
+
+    public void run() {
+        k.table(num);
+    }
+}
+
+public class TwoThread {
+    public static void main(String[] args) {
+        A o = new A();
+        B p = new B(o, 2);
+        C c = new C(o, 5);
+        p.start();
+        c.start();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

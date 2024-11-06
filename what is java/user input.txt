@@ -1,0 +1,155 @@
+public class Main {
+    public static void main(String[] args) {
+        int a = 67;
+        System.out.println("the value of a is " + a);
+        // + :string operator
+        // concatenation :string + value jodhney ka kaam krta hey
+        float b = 7.8f;
+        System.out.println(b);
+        char c = 'u';
+        System.out.println(c);
+        boolean d = false;
+        System.out.println(d);
+        double f=8.9;
+        System.out.println(f);
+    }
+}
+---------------------------------------------------------
+statically types language :
+when declare a variable then data type must be delclared. 
+
+---------------------------------------------------------
+two number additions : 
+
+public class Main {
+    public static void main(String[] args) {
+        int a = 1, b = 1;
+        int c = a + b;
+        System.out.println("the value if c is " + c);
+    }
+}
+---------------------------------------------------------
+user input : 
+
+//package import 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // scanner class used
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the value of a ");
+        int a = sc.nextInt();
+        System.out.println("the value of a is " + a);
+    }
+}
+---------------------------------------------------------------
+import java.util.Scanner;
+
+package :set of predefine class and methods 
+
+import java.util.*;
+
+* :for all 
+
+Scanner sc = new Scanner(System.in);
+
+Scanner :class
+sc:object 
+
+new :keyword 
+->it is used to provide dynamic memory allocation. 
+->it is used to help create a object 
+
+Scanner() :constructor 
+
+System:class 
+in :object :InputStream class object 
+
+sc.nextInt();
+
+nextInt() :predefine method :user se input lene mey help krta hey 
+
+
+//package import 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // scanner class used
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the value of a ");
+        int a = sc.nextInt();
+        System.out.println("the value of a is " + a);
+    }
+}
+----------------------------------------------------------------
+//package import 
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        // scanner class used
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the value of a ");
+        //float 
+        float a=sc.nextFloat();
+        System.out.println("the value of a is "+a);
+        //char
+        char b=sc.next().charAt(0) ;
+        System.out.println("the value of b "+b);
+    }
+}
+-------------------------------------------------------------
+String :set of characters . 
+
+//package import 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String name = "REGex is a learning platform";
+        System.out.println(name);
+    }
+}
+-------------------------------------------------------------
+string user input :
+
+one word 
+->next()
+
+
+//package import 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter one word");
+        String name = sc.next();
+        System.out.println(name);
+    }
+}
+
+
+full paragraph :
+->nextLine() 
+
+
+//package import 
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter  words");
+        String name = sc.nextLine();
+        System.out.println(name);
+    }
+}
+
+-------------------------------------------------------
+
+
+
+
+

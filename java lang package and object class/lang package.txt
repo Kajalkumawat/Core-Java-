@@ -1,0 +1,102 @@
+java.util :
+->Scanner 
+->Arrays 
+->Arraylist , LinkedList , HashSet , HashMap ,LinkedHashSet 
+etc
+
+java.lang package 
+->object class 
+->String 
+->StringBuilder 
+->StringBuffer 
+->Wrapper class
+->Autoboxing and unboxing(Typecasting ) 
+-----------------------------------------------------
+->object class 
+every class have root class is known as object class . 
+
+toString() method
+hashCode() method
+equals(Object obj) method
+finalize() method
+getClass() method
+clone() method
+wait(), notify() notifyAll() methods
+-------------------------------------------------
+toString() method predefine method :
+->toString in print : int convert into the string as a object form 
+
+class A{
+    int a;
+    A(int a){
+        this.a=a;
+    }
+    public String toString(){
+        return a+"";
+    }
+}
+public class Tostring{
+    public static void main(String[] args) {
+        A p=new A(67);
+        System.out.println(p.toString());
+    }
+}
+------------------------------------------------------
+hashCode() method :
+For every object, JVM generates a unique number which is a hashcode. It returns distinct integers for distinct objects. A common misconception about this method is that the hashCode() method returns the address of the object,
+---------------------------------------------------------
+Hashcode1.java
+class A {
+    int a;
+
+    A(int a) {
+        this.a = a;
+    }
+
+    public int hashCode() {
+        return a;
+    }
+}
+
+public class Hashcode1 {
+    public static void main(String[] args) {
+        A p = new A(67);
+        System.out.println(p.hashCode());
+    }
+}
+---------
+equals(Object obj) method
+
+what is difference between equals and == ? 
+
+-------------------------------------------------------
+getClass() method :
+GetclassMethod.java
+class A {
+    void show() {
+        System.out.println("hello world");
+    }
+}
+
+public class GetclassMethod {
+    public static void main(String[] args) {
+        A p=new A();
+        System.out.println(p.getClass());
+        System.out.println(p.getClass().getName());
+    }
+}
+---------------------------------------------------------
+FinalizeMethod.java : 
+public class FinalizeMethod {
+    public void finalize() {
+        System.out.println("call");
+    }
+
+    public static void main(String[] args) {
+        FinalizeMethod s1 = new FinalizeMethod();
+        FinalizeMethod s2 = new FinalizeMethod();
+        s1 = null;
+        s2 = null;
+        System.gc();
+    }
+}

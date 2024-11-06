@@ -1,0 +1,148 @@
+inter thread communication : 
+wait() , notify(), notifyAll() 
+
+InterThread.java
+class A extends Thread {
+    // instance variable
+    int total = 0;
+
+    public void run() {
+        synchronized (this) {
+            System.out.println("first time");//step2
+            for (int i = 1; i <= 10; i++) {
+                total = total + i;
+            }
+            System.out.println("second time");//step3
+            this.notify();
+            System.out.println("inside the notify");
+        }
+    }
+}
+
+public class InterThread {
+    public static void main(String[] args) throws InterruptedException {
+        A p = new A();
+        p.start();
+        synchronized (p) {
+            System.out.println("third time");//step1
+            p.wait();
+            System.out.println("fourth time ");//step4
+            System.out.println(p.total);//step5 
+        }
+    }
+}
+---------------------------------------------------------------
+DeadLock.java
+
+Deadlock can occur in a situation when a thread is waiting for an object lock, that is acquired by another thread and second thread is waiting for an object lock that is acquired by first thread. Since, both threads are waiting for each other to release the lock, the condition is called deadlock.
+
+-------------------------------------------------------
+class A {
+    public synchronized void show(B b) {
+        System.out.println("thread execute");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+
+        }
+        System.out.println("try to call ");
+
+        b.last();
+    }
+
+    public synchronized void last() {
+        System.out.println("last method");
+    }
+}
+
+class B {
+    public synchronized void show(A p) {
+        System.out.println("thread execute");
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+
+        }
+        System.out.println("try to call ");
+        p.last();
+
+    }
+
+    public synchronized void last() {
+        System.out.println("last method");
+    }
+}
+
+public class DeadLock implements Runnable {
+    A a = new A();
+    B p = new B();
+
+    public DeadLock() {
+        Thread t = new Thread(this);
+        t.start();
+        a.show(p);
+    }
+
+    public void run() {
+        p.show(a);
+    }
+
+    public static void main(String[] args) {
+       new DeadLock();
+    
+    }
+}
+-----------------------------------------------------------
+daemon thread : 
+It provides services to user threads for background supporting tasks. It has no role in life than to serve user threads.
+Its life depends on user threads.
+It is a low priority thread.
+
+-----------------------------------------------------------
+Daemonthread.java
+class A extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("thread execute");
+            try {
+
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+            }
+        }
+    }
+}
+
+public class Daemonthread {
+    public static void main(String[] args) {
+        A p = new A();
+        p.setDaemon(true);
+        p.start();
+        System.out.println("main thread execute");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,189 @@
+Thread class :
+---------------------------------------------
+Runnable :
+->interface 
+->implements 
+->include :run method 
+
+-------------------------------------------------------
+RunnableInt.java
+
+runnable interface always call through thread class 
+
+Thread t=new Thread();//default constructor of thread class 
+Thread t=new Thread(t1); //thread classs constructor of runnable interface 
+
+syntax :
+thread constructor :
+new Thread() ; default thread constructor 
+
+Runnable interface constructor 
+new Thread(Runnable r);
+
+class MyThread implements Runnable {
+    public void run() {
+        System.out.println("child thread");
+    }
+}
+
+public class RunnableInt {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        Thread t1 = new Thread(t);
+        t1.start();
+    }
+}
+---------------------------------------------------------------
+Concept1Runnable.java 
+//jvm always work on main method thread then execute another thread
+class MyThread implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("child thread");
+        }
+    }
+}
+
+public class Concept1Runnable {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        Thread t = new Thread(t1);
+        t.start();
+        // main thread
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("main thread");
+        }
+    }
+}
+---------------------
+Concept2Runnable.java
+
+class MyThread implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("child thread");
+        }
+    }
+}
+
+public class Concept2Runnable {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        //t1.run();
+        //t1.start();//error 
+        //runable interface does not call start method 
+        //start method is method of thread class 
+        //run method is method of runnable interface 
+        Thread t = new Thread(t1);
+        t.run();
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("parent thread");
+        }
+    }
+}
+---------------------------------------------------------
+thread constructors :
+
+default constructors :
+->Thread t=new Thread(); 
+
+runnable interface constructor :
+->Thread t=new Thread(Runnable interface);
+
+String constructor : 
+->Thread t=new Thread(String s);
+
+runnable interface and String :
+->Thread t=new Thread(Runnable r,String s);
+
+Thread method :
+first method start 
+
+second method 
+//getter settor method 
+public final String getName();
+
+public final void setName();
+
+MethodOfThread.java
+class MyThread implements Runnable {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("thread ");
+        }
+    }
+}
+
+public class MethodOfThread {
+    public static void main(String[] args) {
+        Thread t = new Thread();
+        // get name
+        System.out.println(t.getName());// default value zero
+        // set value insinde the constructor of thread class
+        String name = "kajal kumawat";
+        // set
+        t.setName(name);
+        // print getname
+        System.out.println(t.getName());
+        // thread constructor
+        Thread t1 = new Thread("hello world");
+        System.out.println(t1.getName());
+        // Thread (Runnable , String )
+        MyThread t3 = new MyThread();
+        Thread t2 = new Thread(t3, "multithreading");
+        t2.start();
+        System.out.println(t2.getName());
+    }
+}
+
+runnable approach best for achive multithreading 
+->runnable is a interface easy to used another class property 
+
+when thread class used then does not access another class property because of in java multiple interitance does not support 
+
+BestApproach.java
+// runnable approach best for achive multithreading 
+// ->runnable is a interface easy to used another class property 
+
+// when thread class used then does not access another class property because of in java multiple interitance does not support 
+
+class MyThread {
+    void show() {
+        System.out.println("show method");
+    }
+}
+
+// it always make thread
+class MyThread1 extends MyThread implements Runnable {
+    public void run() {
+        System.out.println("runnable interface");
+    }
+}
+
+public class BestApproach {
+    public static void main(String[] args) {
+        MyThread1 t = new MyThread1();
+        t.show();
+        Thread th = new Thread(t);
+        th.start();
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

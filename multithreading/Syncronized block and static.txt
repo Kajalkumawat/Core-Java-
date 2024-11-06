@@ -1,0 +1,118 @@
+synchronised block : 
+
+syntax:
+
+synchronized(this){
+
+
+}
+
+class A extends Thread 
+A p=new A();
+
+synchronized(p){
+
+
+}
+------------------------------------------------------------------
+SyncroBlock.java 
+class A {
+    public void table(int n) {
+        synchronized (this) {
+            for (int i = 1; i <= 5; i++) {
+                System.out.print(n * i + " ");
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception ex) {
+                }
+            }
+        }
+    }
+}
+
+class B extends Thread {
+    A p;
+
+    B(A p) {
+        this.p = p;
+    }
+
+    public void run() {
+        p.table(6);
+    }
+}
+
+class C extends Thread {
+    A k;
+
+    C(A k) {
+        this.k = k;
+    }
+
+    public void run() {
+        k.table(8);
+    }
+}
+
+public class SyncroBlock {
+    public static void main(String[] args) {
+        A p = new A();
+        B k = new B(p);
+        C l = new C(p);
+        k.start();
+        l.start();
+    }
+}
+-------------------------------------------------------
+class A {
+    public static synchronized void table(int n) {
+        for (int i = 1; i <= 5; i++) {
+            System.out.print(i * n + " ");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+            }
+        }
+    }
+}
+class B extends Thread{
+    public void run(){
+        A.table(5);;
+    }
+}
+class C extends Thread{
+    public void run(){
+        A.table(6);
+    }
+}
+public class StaticSyncro {
+    public static void main(String[] args) {
+        A p=new A();
+       B k=new B();
+       C w=new C();
+       k.start();
+       w.start();
+    }
+}
+----------------------------------------------------------
+inter thread communication : 
+Inter-thread communication or Co-operation is all about allowing synchronized threads to communicate with each other.
+
+inter thread communication achived through object class methods :wait() , notify(), notifyall()
+
+----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

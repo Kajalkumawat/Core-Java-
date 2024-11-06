@@ -1,0 +1,260 @@
+exception handling :
+--------------------------------------------------------
+overriding concept : 
+->exception exception 
+->uncheck uncheck 
+->exception uncheck 
+
+->uncheck exception 
+->check exception
+->exception check 
+->check check 
+->check uncheck 
+->uncheck check 
+==================================================
+// case 1 : 
+// parent class -->Exception  
+
+// child class --->unchecked Exception 
+
+// it is overrided but does not solve problem of method overriding 
+
+class A{
+    void show() throws Exception{
+        System.out.println("parent class ");
+    }
+}
+class B extends A{
+    void show() throws ArithmeticException{
+      //  super.show();
+        System.out.println("child class ");
+    }
+}
+public class ExceptionOverideCase1 {
+    public static void main(String[] args) {
+       B p=new B();
+       p.show(); 
+    }
+}
+------------------------------------------------
+/*
+ * parent class :Exception same
+ * child class :Exception same 
+ * then it is overrided and easily solve the problem through super keyword using try catch 
+ */
+class A {
+    void show() throws Exception {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws Exception {
+        super.show();
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase2 {
+    public static void main(String[] args) {
+        B p = new B();
+        try {
+            p.show();
+        } catch (Exception ex) {
+            System.out.println("handle");
+        }
+    }
+
+}
+----------------------------------------------------------
+/*
+ * parent class :uncheck exception 
+ * child class :uncheck exception 
+ * method overrided and solve problem and no need to use try catch 
+ */
+class A {
+    void show() throws ArithmeticException {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws ArithmeticException {
+        super.show();
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase3 {
+    public static void main(String[] args) {
+        B p = new B();
+        p.show();
+    }
+
+}
+----------------------------------------------------------
+->uncheck exception 
+/*
+ * parent class :uncheck exception 
+ * child class : exception 
+ * then method does not overrided it give error inside the code not possible 
+ */
+class A {
+    void show() throws ArithmeticException {
+        System.out.println("parent class");
+    }
+}
+
+class B extends A {
+    void show() throws Exception {
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase4 {
+    public static void main(String[] args) {
+
+    }
+}
+---------
+->check exception
+import java.io.IOException;
+/*
+ * parent class :check exception 
+ * child class : exception 
+ * then method does not overrided it give error inside the code not possible 
+ */
+class A {
+    void show() throws IOException {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws Exception {
+        System.out.println("parent class ");
+    }
+}
+
+public class ExceptionOverideCase5 {
+    public static void main(String[] args) {
+
+    }
+}
+
+--------------------------------------------------------------
+->exception check 
+/*
+ * parent class : exception 
+ * child class :check exception 
+ * method will be overrided but does not call directly always used try catch block and does not access parent class method 
+ */
+
+import java.io.IOException;
+
+class A {
+    void show() throws Exception {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws IOException {
+        //super.show();
+        System.out.println("child class ");
+    }
+}
+
+public class ExceptionOverideCase6 {
+    public static void main(String[] args) {
+        B p = new B();
+        try {
+            p.show();
+        } catch (IOException ex) {
+            System.out.println("handle");
+        }
+    }
+}
+
+-----------------------------------------------------
+ExceptionOverideCase7 
+
+->check check 
+/*
+ * parent class : check  
+ * child class :check exception 
+ * method overrided and always handle through try catch block and super also used 
+ * check exception always used try catch block 
+ * uncheck exception no need to used try catch 
+ */
+
+import java.io.IOException;
+
+class A {
+    void show() throws IOException {
+        System.out.println("parent class ");
+    }
+}
+
+class B extends A {
+    void show() throws IOException {
+        super.show();
+        System.out.println("parent class ");
+    }
+}
+
+public class ExceptionOverideCase7 {
+    public static void main(String[] args) {
+        B p = new B();
+        try {
+            p.show();
+        } catch (Exception ex) {
+            System.out.println("handle");
+        }
+    }
+}
+-----------------------------------------------------
+->uncheck check 
+ExceptionOverideCase8.java
+
+/*
+ * parent class :check  
+ * child class :uncheck exception 
+ *
+ */
+
+import java.io.IOException;
+
+class A {
+    void show() throws IOException {
+        System.out.println("Parent class method");
+    }
+}
+
+class B extends A {
+    void show() throws ArithmeticException {
+        try {
+            super.show();
+        } catch (IOException ex) {
+            System.out.println("handle");
+        }
+        System.out.println("Child class method");
+    }
+}
+
+public class Ex9 {
+    public static void main(String[] args) {
+        B k = new B();
+        k.show();
+    }
+}
+-------------------------------------------------------------------------
+multithreading : 
+
+
+
+
+
+
+
+

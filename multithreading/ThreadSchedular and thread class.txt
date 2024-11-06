@@ -1,0 +1,148 @@
+Multithreading :
+------------------------------------------------
+ThreadSchedular.java 
+
+thread schedular is execute by JVM and jvm always read main method as thread on first priorty 
+
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("child thread");
+        }
+    }
+}
+
+public class ThreadSchedular {
+    public static void main(String[] args) {
+        // object thread class
+        MyThread t1 = new MyThread();
+        t1.start();
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("parent thread");
+        }
+    }
+}
+----------------------------------------------------
+concept :difference between run and start method 
+
+run method call then it is normal method of MyThread class 
+
+start method call means thread is convert into the active stage 
+
+RunMethod.java
+class MyThread extends Thread {
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("child thread");
+        }
+    }
+}
+
+public class RunMethod {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.run(); // run method is normal method
+        // start method then thread execute
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("parent thread");
+        }
+    }
+}
+-----------------------------------------
+concept : can we override run method(normal) and thread method (run method): 
+run method does not override 
+	
+OverideRun.java
+class MyThread1 extends Thread {
+    public void run() {
+        System.out.println("parent method");
+    }
+}
+
+class MyThread2 extends MyThread1 {
+    public void run() {
+        super.start();//illegal thread state exception 
+        System.out.println("child method");
+    }
+}
+
+public class OverideRun {
+    public static void main(String[] args) {
+        MyThread2 t = new MyThread2();
+        t.start();
+    }
+}
+-----------------------------------------------------
+can we overload the run method and thread method :
+
+easily run method 
+
+thread method : 
+
+can we pass parameter in start() method 
+run method is overloaded but we can not pass any argument in the start method .     
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("normal method");
+    }
+
+    public void run(int a) {
+        System.out.println(a);
+    }
+}
+
+public class OverloadRun {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start();
+    }
+}
+
+-----------------------------------------------------
+can we make normal start method :
+when want to make inactive stage of thread then make start method in code 
+
+StartRun.java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("run method ");
+    }
+
+    public void start() {
+        System.out.println("start method");
+    }
+
+}
+
+public class StartRun {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        t.start();
+    }
+}
+---------------------------------------------------
+can we call multiple time start in java : 
+
+CallStart.java
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("run method");
+    }
+}
+
+public class CallStart {
+    public static void main(String[] args) {
+        MyThread t = new MyThread();
+        // when call multiple start method in multithreading then give exception illegal
+        // thread exception
+        t.start();
+        t.start();
+    }
+}
+
+
+
+
+
+
+

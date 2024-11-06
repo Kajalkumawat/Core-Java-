@@ -1,0 +1,165 @@
+Exception handling :
+------------------------------------------------------
+run time stack mechanism : 
+
+RunTimeStack.java
+public class RunTimeStack {
+    void fun1() {
+        System.out.println("fun1");
+    }
+
+    void fun2() {
+        fun1();
+        System.out.println("fun2");
+        int a = 9 / 0;
+        System.out.println(a);
+    }
+
+    void fun3() {
+        fun2();
+        System.out.println("fun3");
+        int a = 9 / 0;
+        System.out.println(a);
+    }
+
+    public static void main(String[] args) {
+        new RunTimeStack().fun3();
+    }
+}
+------------------------------------------------------
+exception predefine method :
+
+public void printStackTrace() : 
+name + description + stack 
+
+
+public String toString() :part of object class 
+name +description (no location)
+
+public String getMessage() :
+
+MethodOfException.java
+class A {
+    void show1() {
+        try {
+            int a = 9 / 0;
+            System.out.println(a);
+        } catch (ArithmeticException ex) {
+            System.out.println(ex); // name + description (no stack )
+        }
+    }
+
+    void show2() {
+        try {
+            int a = 9 / 0;
+            System.out.println(a);
+        } catch (ArithmeticException ex) {
+            ex.printStackTrace(); // name +description + location(Stack)
+            System.out.println(ex);
+        }
+    }
+
+    void show3() {
+        try {
+            int a = 9 / 0;
+            System.out.println(a);
+        } catch (ArithmeticException ex) {
+            System.out.println(ex.toString()); // name +description (no location)
+        }
+    }
+
+    void show4() {
+        try {
+            int a = 9 / 0;
+            System.out.println(a);
+        } catch (ArithmeticException ex) {
+            System.out.println(ex.getMessage()); // only message description
+        }
+    }
+}
+
+public class MethodOfException {
+    public static void main(String[] args) {
+        A p = new A();
+        p.show1();
+        p.show2();
+        p.show3();
+        p.show4();
+    }
+}
+------------------------------------------------------
+Nullpointer : 
+
+NullException.java
+public class NullException {
+    public static void main(String[] args) {
+        try {
+            String name = null;
+            System.out.println(name.length());
+        } catch (NullPointerException ex) {
+            System.out.println("handle");
+        }
+    }
+}
+--------------------------------------------------------
+NumberFormat.java 
+
+public class NumberFormat {
+    public static void main(String[] args) {
+        try {
+            String a = "hi";
+            int b = Integer.parseInt(a);
+            System.out.println(b);
+        } catch (NumberFormatException ex) {
+            System.out.println("handle");
+        }
+    }
+}
+-------------
+StringIntoInt.java 
+
+string convert into int used Integer.parseInt()
+
+Integer.parseInt() :predefine method :Integer class -->wrapper class 
+
+public class StringIntoInt {
+    public static void main(String[] args) {
+        String num1 = "12";
+        String num2 = "12";
+        // typecast
+        int a = Integer.parseInt(num1);
+        int b = Integer.parseInt(num2);
+        int c = a + b;
+        System.out.println(c); 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
